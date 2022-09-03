@@ -1,6 +1,13 @@
-import React from "react";
+import React from 'react';
 
-export const App = () => {
-  return <div>Hello from the other side</div>;
+export const App = ({ name, onClick }) => {
+  const [count, setCount] = React.useState(0);
+
+  const handleClick = (event) => {
+    setCount(count + 1);
+    onClick({ event, state: count });
+  };
+
+  return <div onClick={handleClick}>Hello from the other side: {name}</div>;
 };
 export default App;
